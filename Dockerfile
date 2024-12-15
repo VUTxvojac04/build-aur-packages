@@ -1,4 +1,4 @@
-FROM archlinux:latest
+FROM archlinux:base-20241110.0.278197
 
 # Install build dependencies.
 # Note: update (-u) so that the newly installed tools use up-to-date packages.
@@ -39,7 +39,7 @@ RUN \
     sudo pacman -U --noconfirm aurutils-*.pkg.tar.zst && \
     mkdir /home/builder/workspace && \
     cp /tmp/aurutils/aurutils-*.pkg.tar.zst /home/builder/workspace/ && \
-    repo-add /home/builder/workspace/aurci2.db /home/builder/workspace/aurutils-*.pkg.tar.zst
+    repo-add /home/builder/workspace/aurci2.db.tar.gz /home/builder/workspace/aurutils-*.pkg.tar.zst
 
 USER root
 # Note: Github actions require the dockerfile to be run as root, so do not
